@@ -44,27 +44,45 @@ class Person {
 	private String secondName;
 	private Position position;
 	
-	public void setFirstName(String firstName) {
+	public boolean equals(Object obj){
+		if (!(obj instanceof Person))
+			return false;
+		Person person = (Person)obj;
+		return firstName.equals(person.firstName) &&
+			   secondName.equals(person.secondName) &&
+			   position.equals(person.position);
+	}
+	
+	public int hashCode(){
+		int hash = 37;
+		hash = hash + firstName.hashCode();
+		hash = hash + secondName.hashCode();
+		hash = hash + position.hashCode();
+		return hash;
+	}
+	
+	
+	public final void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 	
-	public String getFirstName() {
+	public final  String getFirstName() {
 		return firstName;
 	}
 	
-	public void setSecondName(String secondName) {
+	public final void setSecondName(String secondName) {
 		this.secondName = secondName;
 	}
 	
-	public String getSecondName() {
+	public final String getSecondName() {
 		return secondName;
 	}
 	
-	public void setPosition(String position) {
+	public final void setPosition(String position) {
 		this.position = Position.valueOf(position);
 	}
 	
-	public Position getPosition() {
+	public final Position getPosition() {
 		return position;
 	}
 }
