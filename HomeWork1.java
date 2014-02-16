@@ -1,7 +1,10 @@
+//local code review (vtegza): create java project @ 16.02.14
+//local code review: use public access @ 16.02.14
 class HomeWork1 {
 	public static void main(String[] args) {
 			Person[] person = new Person[4];
-			person[0] = new Person("Ivan", "Ivanov", "DEVELOPER");
+        //local code review (vtegza): in most of cases it is more handy to put enum value instead of string @ 16.02.14
+        person[0] = new Person("Ivan", "Ivanov", "DEVELOPER");
 			person[1] = new Person("Dmitriy", "Dmitriev", "TESTER");
 			person[2] = new Person("Petr", "Petrov", "MANAGER");
 			person[3] = new Person("Ivan", "Ivanov", "DEVELOPER");
@@ -24,9 +27,10 @@ class HomeWork1 {
 			
 	}
 }
-
+//local code review: do not put two separated classes into the one file @ 16.02.14
 class Person {
-	public enum Position {
+    //local code review (vtegza): put it as standalone class or make it static @ 16.02.14
+    public enum Position {
 			DIRECTOR, DEVELOPER, TESTER,
 			QAENGINEER, TEAMLEAD, MANAGER
 	}
