@@ -1,5 +1,7 @@
 package innerouterjoins;
 
+import hw1.Person;
+
 import java.util.Arrays;
 
 /**
@@ -7,31 +9,32 @@ import java.util.Arrays;
  */
 public class ArraysHelper {
 
-    public int[] innerJoin(int[] arr1, int[] arr2){
+    public Person[] innerJoin(Person[] arr1, Person[] arr2){
         int innerJoinArrayLength = arr1.length + arr2.length;
-        int[] innerJoinArray = new int[innerJoinArrayLength];
+        Person[] innerJoinArray = new Person[innerJoinArrayLength];
         int innerJoinArrayEnd = 0;
         Arrays.sort(arr1);
         Arrays.sort(arr2);
-        for(int num1:arr1){
-            if((Arrays.binarySearch(arr2, num1) >= 0) && (Arrays.binarySearch(innerJoinArray, num1) < 0)){
-                innerJoinArray[innerJoinArrayEnd] = num1;
+        for(Person pers:arr1){
+            //if((Arrays.binarySearch(arr2, pers) >= 0) && (Arrays.binarySearch(innerJoinArray, pers) < 0)){
+            if((hw1.Person.personSearch(arr2, pers) >= 0) && (hw1.Person.personSearch(innerJoinArray, pers) < 0)){
+                innerJoinArray[innerJoinArrayEnd] = pers;
                 innerJoinArrayEnd++;
-                Arrays.sort(innerJoinArray);
+                //Arrays.sort(innerJoinArray);
             }
         }
 
         int zerroPosition = 0;
-        for(int num:innerJoinArray)
-            if (num!=0)
+        for(Person pers:innerJoinArray)
+            if (pers!=null)
                 zerroPosition++;
 
         int innerJoinNewArrayLength = zerroPosition;
-        int[] innerJoinNewArray = new int[innerJoinNewArrayLength];
+        Person[] innerJoinNewArray = new Person[innerJoinNewArrayLength];
         int innerJoinNewArrayElement = 0;
-        for(int num:innerJoinArray){
-            if (num != 0) {
-                innerJoinNewArray[innerJoinNewArrayElement] = num;
+        for(Person pers:innerJoinArray){
+            if (pers != null) {
+                innerJoinNewArray[innerJoinNewArrayElement] = pers;
                 innerJoinNewArrayElement++;
             }
         }
@@ -39,32 +42,38 @@ public class ArraysHelper {
         return innerJoinNewArray;
     }
 
-    public int[] outerJoin(int[] arr1, int[] arr2){
+    public Person[] outerJoin(Person[] arr1, Person[] arr2){
         int outerJoinArrayLength = arr1.length + arr2.length;
-        int[] outerJoinArray = new int[outerJoinArrayLength];
+        Person[] outerJoinArray = new Person[outerJoinArrayLength];
         int outerJoinArrayEnd = 0;
         Arrays.sort(arr1);
         Arrays.sort(arr2);
-        for(int num:arr1){
-            if(Arrays.binarySearch(arr2, num) < 0){
-                outerJoinArray[outerJoinArrayEnd] = num;
+        for(Person pers:arr1){
+            if(Arrays.binarySearch(arr2, pers) < 0){
+                outerJoinArray[outerJoinArrayEnd] = pers;
                 outerJoinArrayEnd++;
             }
         }
 
-        for(int num:arr2){
-            if(Arrays.binarySearch(arr1, num) < 0){
-                outerJoinArray[outerJoinArrayEnd] = num;
+        for(Person pers:arr2){
+            if(Arrays.binarySearch(arr1, pers) < 0){
+                outerJoinArray[outerJoinArrayEnd] = pers;
                 outerJoinArrayEnd++;
             }
         }
 
-        int outerJoinNewArrayLength = Arrays.binarySearch(outerJoinArray, 0);
-        int[] outerJoinNewArray = new int[outerJoinNewArrayLength];
+        int zerroPosition = 0;
+        for(Person pers:outerJoinArray)
+            if (pers!=null)
+                zerroPosition++;
+
+        //int outerJoinNewArrayLength = Arrays.binarySearch(outerJoinArray, null);
+        int outerJoinNewArrayLength = zerroPosition;
+        Person[] outerJoinNewArray = new Person[outerJoinNewArrayLength];
         int outerJoinNewArrayElement = 0;
-        for(int num:outerJoinArray){
-            if (num != 0) {
-                outerJoinNewArray[outerJoinNewArrayElement] = num;
+        for(Person pers:outerJoinArray){
+            if (pers != null) {
+                outerJoinNewArray[outerJoinNewArrayElement] = pers;
                 outerJoinNewArrayElement++;
             }
         }
