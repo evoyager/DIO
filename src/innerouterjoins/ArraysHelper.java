@@ -2,6 +2,7 @@ package innerouterjoins;
 
 import hw1.Person;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -9,76 +10,56 @@ import java.util.Arrays;
  */
 public class ArraysHelper {
 
-    public Person[] innerJoin(Person[] arr1, Person[] arr2){
-        int innerJoinArrayLength = arr1.length + arr2.length;
-        Person[] innerJoinArray = new Person[innerJoinArrayLength];
-        int innerJoinArrayEnd = 0;
-        Arrays.sort(arr1);
-        Arrays.sort(arr2);
+    public ArrayList<Person> innerJoin(ArrayList<Person> arr1, ArrayList<Person> arr2){
+        ArrayList<Person> innerJoinArray = new ArrayList<Person>();
         for(Person pers:arr1){
-            //if((Arrays.binarySearch(arr2, pers) >= 0) && (Arrays.binarySearch(innerJoinArray, pers) < 0)){
             if((hw1.Person.personSearch(arr2, pers) >= 0) && (hw1.Person.personSearch(innerJoinArray, pers) < 0)){
-                innerJoinArray[innerJoinArrayEnd] = pers;
-                innerJoinArrayEnd++;
-                //Arrays.sort(innerJoinArray);
+                innerJoinArray.add(pers);
             }
         }
 
-        int zerroPosition = 0;
-        for(Person pers:innerJoinArray)
-            if (pers!=null)
-                zerroPosition++;
+//        int zerroPosition = 0;
+//        for(Person pers:innerJoinArray)
+//            if (pers!=null)
+//                zerroPosition++;
+//
+//        int innerJoinNewArrayLength = zerroPosition;
+//        ArrayList<Person> innerJoinNewArray = new ArrayList<Person>();
+//        int innerJoinNewArrayElement = 0;
+//        for(Person pers:innerJoinArray){
+//            if (pers != null) {
+//                innerJoinNewArray.set(innerJoinNewArrayElement, pers);
+//                innerJoinNewArrayElement++;
+//            }
+//        }
 
-        int innerJoinNewArrayLength = zerroPosition;
-        Person[] innerJoinNewArray = new Person[innerJoinNewArrayLength];
-        int innerJoinNewArrayElement = 0;
-        for(Person pers:innerJoinArray){
-            if (pers != null) {
-                innerJoinNewArray[innerJoinNewArrayElement] = pers;
-                innerJoinNewArrayElement++;
-            }
-        }
-
-        return innerJoinNewArray;
+        return innerJoinArray;
     }
 
-    public Person[] outerJoin(Person[] arr1, Person[] arr2){
-        int outerJoinArrayLength = arr1.length + arr2.length;
-        Person[] outerJoinArray = new Person[outerJoinArrayLength];
-        int outerJoinArrayEnd = 0;
-        Arrays.sort(arr1);
-        Arrays.sort(arr2);
+    public ArrayList<Person> outerJoin(ArrayList<Person> arr1, ArrayList<Person> arr2){
+        ArrayList<Person> outerJoinArray = new ArrayList<Person>();
         for(Person pers:arr1){
-            if(Arrays.binarySearch(arr2, pers) < 0){
-                outerJoinArray[outerJoinArrayEnd] = pers;
-                outerJoinArrayEnd++;
+            if(hw1.Person.personSearch(arr2, pers) < 0){
+                outerJoinArray.add(pers);
             }
         }
 
-        for(Person pers:arr2){
-            if(Arrays.binarySearch(arr1, pers) < 0){
-                outerJoinArray[outerJoinArrayEnd] = pers;
-                outerJoinArrayEnd++;
-            }
-        }
+//        int zerroPosition = 0;
+//        for(Person pers:outerJoinArray)
+//            if (pers!=null)
+//                zerroPosition++;
+//
+//        int outerJoinNewArrayLength = zerroPosition;
+//        ArrayList<Person> outerJoinNewArray = new ArrayList<Person>();
+//        int outerJoinNewArrayElement = 0;
+//        for(Person pers:outerJoinArray){
+//            if (pers != null) {
+//                outerJoinNewArray.set(outerJoinNewArrayElement, pers);
+//                outerJoinNewArrayElement++;
+//            }
+//        }
 
-        int zerroPosition = 0;
-        for(Person pers:outerJoinArray)
-            if (pers!=null)
-                zerroPosition++;
-
-        //int outerJoinNewArrayLength = Arrays.binarySearch(outerJoinArray, null);
-        int outerJoinNewArrayLength = zerroPosition;
-        Person[] outerJoinNewArray = new Person[outerJoinNewArrayLength];
-        int outerJoinNewArrayElement = 0;
-        for(Person pers:outerJoinArray){
-            if (pers != null) {
-                outerJoinNewArray[outerJoinNewArrayElement] = pers;
-                outerJoinNewArrayElement++;
-            }
-        }
-        Arrays.sort(outerJoinNewArray);
-        return outerJoinNewArray;
+        return outerJoinArray;
     }
 }
 

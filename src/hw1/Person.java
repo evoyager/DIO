@@ -1,5 +1,6 @@
 package hw1;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Person implements Comparator<Person>, Comparable<Person> {
@@ -50,10 +51,10 @@ public class Person implements Comparator<Person>, Comparable<Person> {
 //        setPosition(position);
 //    }
 
-    public static int personSearch(Person[] array, Person person) throws NullPointerException{
-        for(int i = 0; i < array.length; i++){
+    public static int personSearch(ArrayList<Person> list, Person person) throws NullPointerException{
+        for(int i = 0; i < list.size(); i++){
             try{
-                if (array[i].equals(person))
+                if (list.get(i).equals(person))
                     return i;
             }catch(NullPointerException e){
             }
@@ -61,10 +62,10 @@ public class Person implements Comparator<Person>, Comparable<Person> {
         return -1;
     }
 
-    public static boolean equals(Person[] arr1, Person[] arr2){
+    public static boolean equals(ArrayList<Person> arr1, ArrayList<Person> arr2){
         boolean arraysAreEqual = true;
-        for(int i = 0; i < arr1.length; i++){
-            if((arr1[i].equals(arr2[i]))&&(arr1.length == arr2.length));
+        for(int i = 0; i < arr1.size(); i++){
+            if((arr1.get(i).equals(arr2.get(i)))&&(arr1.size() == arr2.size()));
             else {
                 arraysAreEqual = false;
                 return arraysAreEqual;
