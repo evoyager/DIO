@@ -5,7 +5,7 @@ import hw1.Person;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static join.Join.rightJoin;
+//import static join.Join.rightJoin;
 
 /**
 * Created by EVGENIY on 25.02.14.
@@ -70,9 +70,9 @@ public class ArraysHelperTest {
         innerJoinArray = helper.innerJoin(rightArray, leftArray);
         ArrayList<Person> outerJoinArray1 = helper.outerJoin(leftArray, rightArray);
         ArrayList<Person> outerJoinArray2 = helper.outerJoin(rightArray, leftArray);
-        ArrayList<Person> outerJoinArray = rightJoin(outerJoinArray2, outerJoinArray1);
+        //ArrayList<Person> outerJoinArray = rightJoin(outerJoinArray2, outerJoinArray1);
 
-        ArrayList<Person> rightJoinArray = rightJoin(leftArray, rightArray);
+        //ArrayList<Person> rightJoinArray = rightJoin(leftArray, rightArray);
 
         ArrayList<Person> innerJoinTrueArray = new ArrayList<Person>();
         innerJoinTrueArray.add(person.get(0));
@@ -86,11 +86,11 @@ public class ArraysHelperTest {
         System.out.println(" " + innerJoinArray.containsAll(innerJoinTrueArray));
 
         System.out.print("Outer join array: ");
-        System.out.print(outerJoinArray);
-        System.out.println(" " + outerJoinArray.containsAll(outerJoinTrueArray));
-
-        System.out.print("Right join array: ");
-        System.out.println(rightJoinArray);
+//        System.out.print(outerJoinArray);
+//        System.out.println(" " + outerJoinArray.containsAll(outerJoinTrueArray));
+//
+//        System.out.print("Right join array: ");
+//        System.out.println(rightJoinArray);
     }
 }
 
